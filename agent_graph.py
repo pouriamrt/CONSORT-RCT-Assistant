@@ -108,8 +108,8 @@ def graph_construct(conversational_rag_chain, model="gpt-4.1-mini"):
         agent_out = query_agent_runnable.invoke(state)
         return {"agent_out": agent_out}
 
-    def execute_search(state: list):
-        print("> execute_search")
+    def execute_rag(state: list):
+        print("> execute_rag")
         action = state["agent_out"]
         tool_call = action[-1].message_log[-1].additional_kwargs["tool_calls"][-1]
         
@@ -163,7 +163,7 @@ def graph_construct(conversational_rag_chain, model="gpt-4.1-mini"):
     graph = StateGraph(AgentState)
 
     graph.add_node("query_agent", run_query_agent)
-    graph.add_node("rag", execute_search)
+    graph.add_node("rag", execute_rag)
     graph.add_node("sql", execute_sql)
     graph.add_node("error", handle_error)
 
