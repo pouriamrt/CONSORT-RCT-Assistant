@@ -36,7 +36,6 @@ def graph_construct(conversational_rag_chain, model="gpt-4.1-mini"):
     def sql_tool(query: str, session_id: str):
         """Returns the answer to the questions which is transformable to a sql query."""
         
-        # db = SQLDatabase.from_uri("sqlite:///C:/Users/pouri/Python/Lang_Chain/Projects/BHI_project/all_docs_zotero/chroma/chroma_new.sqlite3", include_tables=['embedding_metadata'])
         db = SQLDatabase.from_uri("postgresql+psycopg://bsituser:M4pbcMDsbm30zDV6@awseb-e-mmtzduxdgy-stack-awsebrdsdatabase-a1ggrejgeign.cp5mioiwgdbp.ca-central-1.rds.amazonaws.com:5432/user_db")
         
         execute_query = QuerySQLDataBaseTool(db=db)
@@ -48,6 +47,7 @@ def graph_construct(conversational_rag_chain, model="gpt-4.1-mini"):
         SQLQuery: "SQL Query to run"
 
         """
+        
         restrictions = """
         Format all numeric response ###,###,###,###.
         Only return relevant columns to the question.
@@ -57,6 +57,7 @@ def graph_construct(conversational_rag_chain, model="gpt-4.1-mini"):
         Top_k: {top_k}
         Table Info: {table_info}
         """
+        
         prompt = seed_prompt + restrictions
         PROMPT = PromptTemplate(
             input_variables=["input", "top_k", "table_info"], template=prompt

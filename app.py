@@ -111,6 +111,7 @@ def setup_runnable():
         vectorstore,
         document_content_description,
         metadata_field_info,
+        verbose=True,
         #search_kwargs={"k": 10}
         #enable_limit=True,
     )
