@@ -155,32 +155,32 @@ def build_runnable():
         ),
         AttributeInfo(
             name="Population", 
-            description="Whether the Population is mentioned in the paper. P flag in PICOS is True or False.", 
+            description="Whether the Population is mentioned in the paper. P flag in PICOS is the string True or False.", 
             type="string",
         ),
         AttributeInfo(
             name="Intervention", 
-            description="Whether the Intervention is mentioned in the paper. I flag in PICOS is True or False.", 
+            description="Whether the Intervention is mentioned in the paper. I flag in PICOS is the string True or False.", 
             type="string",
         ),
         AttributeInfo(
             name="Comparator", 
-            description="Whether the Comparator is mentioned in the paper. C flag in PICOS is True or False.", 
+            description="Whether the Comparator is mentioned in the paper. C flag in PICOS is the string True or False.", 
             type="string",
         ),
         AttributeInfo(
             name="Outcome", 
-            description="Whether the Outcome is mentioned in the paper. O flag in PICOS is True or False.", 
+            description="Whether the Outcome is mentioned in the paper. O flag in PICOS is the string True or False.", 
             type="string",
         ),
         AttributeInfo(
             name="Study Design", 
-            description="Whether the Study Design is mentioned in the paper. S flag in PICOS is True or False.", 
+            description="Whether the Study Design is mentioned in the paper. S flag in PICOS is the string True or False.", 
             type="string",
         ),
         AttributeInfo(
             name="Qualification", 
-            description="Whether the paper is PICOS compliant or not.", 
+            description="Whether the paper is PICOS compliant or not. It is the string Qualified or Not Qualified.", 
             type="string",
         ),
     ]
