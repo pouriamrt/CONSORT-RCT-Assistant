@@ -1,4 +1,4 @@
-# Welcome to BHI Chatbot! 🚀🤖
+# Welcome to CONSORT-RCT Assistant! 🚀🤖
 
 Hello, Researcher! 👋 We're thrilled to introduce you to our specialized chatbot, designed to assist you with CONSORT and RCT-related queries. This advanced chatbot leverages a Retrieval-Augmented Generation (RAG) approach, ensuring you receive accurate and relevant answers by accessing a comprehensive database.
 
