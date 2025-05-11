@@ -41,6 +41,7 @@ SCHEMA
 • Write the simplest SQL query that answers the user question below.  
 • Do **NOT** add comments, markdown, or explanations.  
 • Limit results to {top_k} rows unless the question explicitly asks for all rows.  
+• Do not use `LIMIT` in your query for questions about counts.
 • If the question requests a count, use `COUNT(*) AS total`.
 • Pay attention to the database schema.
 
@@ -89,7 +90,7 @@ def make_rag_tool(chain):
         return {"answer": res["answer"], "context": res["context"]}
     return rag
 
-MAX_RETRIES = 3
+MAX_RETRIES = 2
 TIMEOUT = 15
 def preprocess_sql(sql: str) -> str:
     sql = re.sub(r"```.*?```", "", sql, flags=re.S)

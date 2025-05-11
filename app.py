@@ -55,7 +55,7 @@ CONTEXTUALIZE_PROMPT = ChatPromptTemplate.from_messages(
 )
 
 QA_SYS = """You are an assistant for medical research questions.
-Answer from the supplied context.  If unsure say
+Answer from the supplied context. You can deduce the answer from the context as well. If unsure say
 "I don't know from the given documents.".
 
 {context}"""
@@ -81,7 +81,7 @@ async def grade_documents(question: str, docs: List[str]) -> List[Tuple[str, int
     scores = [int((await t).content.strip()[:1]) for t in asyncio.as_completed(tasks)]
     return list(zip(docs, scores))
 
-def filter_by_grade(docs_scored, threshold: int = 1):
+def filter_by_grade(docs_scored, threshold: int = 2):
     return [d for d, s in docs_scored if s >= threshold]
 
 # ----------  hallucination checker ---------- #
@@ -114,7 +114,7 @@ async def hallucination_guard(answer: str, ctx_docs):
         CHECK_PROMPT.format(context=ctx_text, answer=answer),
         **llm_json_mode,
     )
-    print(raw)
+    
     try:
         js = await json_parser.aparse(raw.content)   # reliable JSON parse
         score = float(js.get("score", 0))
