@@ -102,10 +102,15 @@ def preprocess_sql(sql: str) -> str:
 async def sql_tool(query: str, session_id: str):
     """Answer questions that can be converted to SQL."""
     plain_q = query.rsplit("session_id", 1)[0].strip()
+    table_info = SQL_DB.get_table_info()
 
     # 1) LLM ➜ SQL
     sql = await asyncio.wait_for(
-        WRITE_QUERY.ainvoke({"question": plain_q}),
+        WRITE_QUERY.ainvoke({
+            "question": plain_q, 
+            "table_info": table_info,
+            "top_k": 7
+        }),
         timeout=TIMEOUT,
     )
     sql = preprocess_sql(sql)
