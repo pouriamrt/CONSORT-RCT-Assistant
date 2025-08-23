@@ -36,7 +36,7 @@ LLM = ChatOpenAI(
     temperature=0,
     streaming=True,
 )
-UTILITY_LLM = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+
 EMB = OpenAIEmbeddings()
 
 VECTORSTORE = PGVector(
@@ -110,7 +110,7 @@ async def hallucination_guard(answer: str, ctx_docs):
     ctx_text = "\n\n".join(d.page_content for d in ctx_docs)[:6000]
 
     llm_json_mode = {"response_format": {"type": "json_object"}}
-    raw = await UTILITY_LLM.ainvoke(
+    raw = await LLM.ainvoke(
         CHECK_PROMPT.format(context=ctx_text, answer=answer),
         **llm_json_mode,
     )
@@ -189,7 +189,7 @@ def build_runnable():
         VECTORSTORE,
         "medical research papers",
         metadata_info,
-        search_kwargs={"k": 8},
+        search_kwargs={"k": 10},
     )
 
     # 2 . LLM filter (grade ≥ 2)
