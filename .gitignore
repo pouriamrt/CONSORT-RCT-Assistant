@@ -1,0 +1,7 @@
+__pycache__/
+.venv/
+myenv/
+nohup.out
+.chainlit
+.files
+.env
