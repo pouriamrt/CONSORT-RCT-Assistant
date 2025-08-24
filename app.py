@@ -294,7 +294,7 @@ async def handle(message: cl.Message):
         src_lines = []
         for i, doc in enumerate(ctx_docs, 1):
             title = (
-                doc.metadata.get("title")                # prefer explicit title
+                doc.metadata.get("Title")                # prefer explicit title
                 or doc.metadata.get("source")            # or a “source” field
                 or doc.page_content.strip()[:120] + "…"  # fallback: snippet
             )
