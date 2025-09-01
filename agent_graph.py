@@ -44,7 +44,7 @@ SCHEMA
 • Do not use `LIMIT` in your query for questions about counts.
 • If the question requests a count, use `COUNT(*) AS total`.
 • Pay attention to the database schema.
-• Prefer using **ILIKE** in your queries.
+• Prefer using **ILIKE** with **%%** in your queries.
 
 **Question**
 
