@@ -44,6 +44,7 @@ SCHEMA
 • Do not use `LIMIT` in your query for questions about counts.
 • If the question requests a count, use `COUNT(*) AS total`.
 • Pay attention to the database schema.
+• Prefer using **ILIKE** in your queries.
 
 **Question**
 
@@ -167,7 +168,7 @@ def build_graph(conversational_rag_chain):
     prompt = hub.pull("hwchase17/openai-functions-agent")
     prompt.messages[0].prompt.template = (
         "You are a helpful assistant. Choose the *single best* tool "
-        "based on the question."
+        "based on the question. For questions with 'How many', use the sql tool preferably."
     )
 
     query_agent = create_openai_tools_agent(LLM, TOOLS, prompt)
@@ -237,7 +238,7 @@ def build_graph(conversational_rag_chain):
         }
 
     def route_validation(state):
-        if state.get("revision_reason") and state["retries"] < 3:
+        if state.get("revision_reason") and state["retries"] < 5:
             return "revise"
         return "done"
 
