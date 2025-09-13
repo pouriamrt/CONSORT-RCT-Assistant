@@ -1,7 +1,7 @@
 # 📑 CONSORT-RCT Assistant – AI-Powered Chatbot for Clinical Trial Reporting
 
 Welcome to **CONSORT-RCT Assistant**, a domain-specific AI assistant built to streamline clinical trial research workflows! This chatbot leverages **LangChain**, **LangGraph**, and **Chainlit** to answer CONSORT and RCT-related questions using a powerful **Retrieval-Augmented Generation (RAG)** pipeline based on 916 research papers.
-
+ 
 ---
 
 ## 🚀 Features
